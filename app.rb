@@ -4,22 +4,38 @@ require 'sinatra'
 class MetadataServerMock < Sinatra::Base
 
   get "/" do
-    "MetadataServerMock ¯\_(ツ)_/¯"
+    metadatas = Dir["metadata/*"].map{ |f| "<li><a href='#{f}'>#{f}</a></li>"}.join('')
+    %Q{
+      <h3>Metadata Server Mock:</h3>
+      <ul>
+        #{metadatas}
+      </ul>
+    }
   end
 
-  get "/metadata/789ef8ae89617f34c07f7f6a12e4d65146f958c0bc15a97b4ff169f1" do
+  get "/metadata/:metadata" do
     content_type :json
-    JSON.parse(File.read("metadata/789ef8ae89617f34c07f7f6a12e4d65146f958c0bc15a97b4ff169f1")).to_json
-  end
 
-  get "/metadata/789ef8ae89617f34c07f7f6a12e4d65146f958c0bc15a97b4ff169f16861707079636f696e" do
-    content_type :json
-    JSON.parse(File.read("metadata/789ef8ae89617f34c07f7f6a12e4d65146f958c0bc15a97b4ff169f16861707079636f696e")).to_json
+    file = "metadata/#{params[:metadata]}"
+    if File.exists? file
+      JSON.parse(File.read("metadata/#{params[:metadata]}")).to_json
+    else
+      "Requested subject '#{params[:metadata]}' not found"
+    end
   end
 
   post "/metadata/query" do
     content_type :json
-    JSON.parse(File.read("metadata/query_response")).to_json
+
+    files = Dir["metadata/*"].map{ |f| f.split("/").last}
+    ps = JSON.parse(request.body.read)
+    mocked_files = (files & ps["subjects"])
+    resp = []
+    mocked_files.each do |f|
+      resp << JSON.parse(File.read("metadata/#{f}"))
+    end
+
+    {"subjects" => resp}.to_json
   end
 
 end
