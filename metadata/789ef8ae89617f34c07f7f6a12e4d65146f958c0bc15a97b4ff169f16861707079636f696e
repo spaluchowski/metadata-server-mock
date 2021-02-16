@@ -5,7 +5,7 @@
         "hashFn": "sha256"
     },
     "name": {
-        "value": "AssetNameCoin",
+        "value": "HappyCoin",
         "anSignatures": [
             {
                 "publicKey": "eea2aece21d77ee1d363e997f535b10522ad7abd09a247553211c7eb51d9c37e",

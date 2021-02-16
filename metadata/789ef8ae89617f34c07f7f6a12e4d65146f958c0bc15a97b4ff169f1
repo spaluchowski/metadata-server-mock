@@ -5,7 +5,7 @@
         "hashFn": "sha256"
     },
     "name": {
-        "value": "NoAssetNameCoin",
+        "value": "SadCoin",
         "anSignatures": [
             {
                 "publicKey": "16fc67a3da106d6f9db295a2a39be66bc1cba0bdbca410472191775220e999ab",

@@ -11,6 +11,7 @@ To add new metadata make PR with new file in metadata folder in this repository.
 2. :point_down:
 ```
 git clone https://github.com/piotr-iohk/metadata-server-mock.git
+cd metadata-server-mock
 bundle install
 ./start
 ```
