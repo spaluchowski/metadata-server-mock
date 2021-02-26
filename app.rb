@@ -3,7 +3,7 @@ require 'sinatra'
 
 class MetadataServerMock < Sinatra::Base
 
-  known_properties =["name", "description", "acronym", "logo", "url", "unit"]
+  known_properties =["name", "description", "ticker", "logo", "url", "unit"]
 
   get "/" do
     metadatas = Dir["metadata/*"].map{ |f| "<li><a href='#{f}'>#{f}</a></li>"}.join('')
