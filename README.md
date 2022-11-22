@@ -1,7 +1,7 @@
 
 # metadata-server-mock
 
-http://metadata-server-mock.herokuapp.com/
+http://ec2-44-197-192-237.compute-1.amazonaws.com:4441/
 
 To add new metadata make PR with new file in metadata folder in this repository.
 
