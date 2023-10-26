@@ -1,8 +1,6 @@
 
 # metadata-server-mock
 
-http://ec2-18-156-193-207.eu-central-1.compute.amazonaws.com:4441/
-
 To add new metadata make PR with new file in metadata folder in this repository.
 
 ## To start locally
